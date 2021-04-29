@@ -1,7 +1,7 @@
-o add a function to determine whether the frame is voiced or unvoiced
-o based on that rework the last implemented algorithms
+* add a function to determine whether the frame is voiced or unvoiced
+* based on that rework the last implemented algorithms
 
-o algorithms still to implement: 
+* algorithms still to implement: 
 	o Feature Extraction Strategy F0-F1-F2
 	o Continuous Interleaved Sampling – CIS
 	o Spectral-PEAK [seligman+1995]
