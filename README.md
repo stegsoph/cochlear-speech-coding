@@ -1,5 +1,3 @@
-# cochlear-speech-coding
-
 # To-Do-List
 
 * add a function to determine whether the frame is voiced or unvoiced
