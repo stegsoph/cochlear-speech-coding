@@ -13,6 +13,13 @@ function zero_crossings(array::AbstractVector{T}, size::Int = length(array), off
     result
 end;
 
+""" From zero_crossings to frequency """
+function freq_est_ZC(array,Fs)
+    ZCR = zero_crossings(convert(Array{Float64,1}, array))
+    f_est = ZCR/length(array)*Fs/2
+    return f_est
+end;
+
 """splits an array into overlapping frames"""
 
 function generate_frames(signal,Fs)
@@ -55,12 +62,15 @@ end
 
 """ generates biphasic pulses """
 
-function biphasic_pulse(N_total,N_pulse,N_period)
+function biphasic_pulse(N_total,N_pulse,N_period;offset::Int64 = 0)
     N_repeat = convert(Int, ceil(N_total/N_period))
+
     x = range(0, 1, length = N_pulse)
     y = ones(size(x))
+
     y[abs.(x) .> 0.5] .= -1
-    append!(y,zeros((N_period-N_pulse,1)))
+    # append!(y,zeros((N_period-N_pulse,1)))
+    y = [zeros((offset,1));y;zeros((N_period-N_pulse-offset,1))]
     y = repeat(y,N_repeat,1)
     y = y[1:N_total]
     return y
@@ -71,4 +81,46 @@ end
 function WAV.wavplay(x::AbstractArray,fs)
     path = "./tmp/a.wav"
     wavwrite(x,path,Fs=fs)
+end
+
+
+""" pulse generation with N electrodes """
+
+function pulse_generation(Fs,PulseRate,ElectrodeRate,Envelope,N_electrodes;f_low=1e3,f_high=4e3)
+
+    pulses = []
+    electrodes = []
+
+    N_signal = length(Envelope)
+    number_frames = size(PulseRate)[1]
+
+    N_total = convert(Int,ceil(N_signal/number_frames))
+    N_period_vec = convert.( Int, round.( Fs ./ PulseRate ) )
+    N_pulse = convert(Int, round(1e-3 * Fs))
+
+    delta_freq = (f_high-f_low)/(N_electrodes)
+    frequency_spacing = collect( range(f_low+delta_freq, f_high, length = N_electrodes) );
+    electrode_signal = zeros(N_electrodes,N_signal)
+
+    for idx_frame in 1:number_frames
+        
+        idx_begin = (idx_frame-1)*N_total+1 
+        idx_end = min(N_signal,idx_begin+N_total-1)
+        idx_diff = idx_end-idx_begin
+          
+        N_period = N_period_vec[idx_frame]
+        pulse_frame = biphasic_pulse(N_total,N_pulse,N_period)
+        pulse_frame = Envelope[idx_begin : idx_end].*pulse_frame[1:idx_diff+1]
+        
+        append!(pulses, pulse_frame) 
+        
+        number_electrode = findall( ElectrodeRate[idx_frame] .<= frequency_spacing )
+        append!(electrodes, minimum( number_electrode ) )
+
+        electrode_signal[minimum( number_electrode ) , idx_begin : idx_end] = pulse_frame
+        
+    end
+
+    return electrode_signal,electrodes,pulses,frequency_spacing
+
 end
