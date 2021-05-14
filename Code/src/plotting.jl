@@ -5,9 +5,9 @@ function plot_spectrogram(s, fs; t_window::Float64 = 25e-3, t_overlap ::Float64=
     t = S.time
     f = S.freq
     imshow(reverse(log10.(S.power), dims = 1), extent=[first(t)/fs, last(t)/fs,
-             fs*first(f), fs*last(f)], aspect="auto", cmap="jet", vmin=1, vmax=-15)
+             fs*first(f)/1000, fs*last(f)/1000], aspect="auto", cmap="jet", vmin=1, vmax=-15)
     xlabel("Time in s")
-    ylabel("Frequency in Hz")
+    ylabel("Frequency in kHz")
     cbar = colorbar()
     cbar.set_label("dB")
 end;
