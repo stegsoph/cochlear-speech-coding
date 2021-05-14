@@ -1,7 +1,7 @@
 # To-Do-List
 
-* add a function to determine whether the frame is voiced or unvoiced
-* based on that rework the last implemented algorithms
+* add a function to determine whether the frame is voiced or unvoiced :heavy_check_mark:
+* based on that rework the last implemented algorithms :heavy_check_mark:
 
 * algorithms still to implement: 
 
@@ -11,6 +11,6 @@
 	
 	o Spectral-PEAK [seligman+1995] :heavy_check_mark:
 	
-	o Advanced Combination Encoder– ACE (only frame rate is different)
+	o Advanced Combination Encoder– ACE (only frame rate is different) :heavy_check_mark:
 	
-	o Fine Structure Processing – CSSS (see MedEl video)
+	o Fine Structure Processing – CSSS (see MedEl video) :heavy_check_mark:
