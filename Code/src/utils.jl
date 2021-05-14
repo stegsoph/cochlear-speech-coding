@@ -70,7 +70,7 @@ function biphasic_pulse(N_total,N_pulse,N_period;offset::Int64 = 0)
 
     y[abs.(x) .> 0.5] .= -1
     # append!(y,zeros((N_period-N_pulse,1)))
-    y = [zeros((offset,1));y;zeros((N_period-N_pulse-offset,1))]
+    y = [zeros( minimum([offset, N_period-N_pulse]),1);y;zeros(maximum( [ N_period-N_pulse-offset, 0 ] ) ,1)]
     y = repeat(y,N_repeat,1)
     y = y[1:N_total]
     return y
