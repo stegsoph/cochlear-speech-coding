@@ -1,16 +1,29 @@
-# To-Do-List
+# Sound Coding in Cochlear Implants
 
-* add a function to determine whether the frame is voiced or unvoiced :heavy_check_mark:
-* based on that rework the last implemented algorithms :heavy_check_mark:
+## Overview of the following coding schemes:
 
-* algorithms still to implement: 
+- Single Channel CI 
+- Multi Channel CI
+- Feature Extraction Strategy F0-F2
+- Feature Extraction Strategy F0-F1-F2
+- Continuous Interleaved Sampling – CIS
+- Spectral-PEAK
+- Advanced Combination Encoder – ACE
+- Fine Structure Processing – FSP
 
-	o Feature Extraction Strategy F0-F1-F2 :heavy_check_mark:
-	
-	o Continuous Interleaved Sampling – CIS :heavy_check_mark:
-	
-	o Spectral-PEAK [seligman+1995] :heavy_check_mark:
-	
-	o Advanced Combination Encoder– ACE (only frame rate is different) :heavy_check_mark:
-	
-	o Fine Structure Processing – CSSS (see MedEl video) :heavy_check_mark:
+## Coding language and dependencies:
+
+This project is written in *Julia* in the IJulia browser-based enviroment Jupyter Notebook. The notebook relies on the following packages
+
+	PyPlot
+	PyCall
+	WAV
+	DSP
+	FFTW
+
+which can be installed in the Julia command line by typing:
+
+``` 
+using Pkg
+Pkg.add("Package Name")
+``` 
