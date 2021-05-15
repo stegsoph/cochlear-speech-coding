@@ -8,8 +8,8 @@
 - Feature Extraction Strategy F0-F1-F2
 - Continuous Interleaved Sampling – CIS
 - Spectral-PEAK
-- Advanced Combination Encoder– ACE
-- Fine Structure Processing - FSP
+- Advanced Combination Encoder – ACE
+- Fine Structure Processing – FSP
 
 ## Coding language and dependencies:
 
