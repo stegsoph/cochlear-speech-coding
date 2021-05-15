@@ -21,7 +21,7 @@ This project is written in *Julia* in the IJulia browser-based enviroment Jupyte
 	DSP
 	FFTW
 
-which can be installed in the Julia command line by typing  
+which can be installed in the Julia command line by typing:
 
 ``` 
 using Pkg
