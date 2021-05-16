@@ -58,6 +58,7 @@ function plot_electrode(N_electrodes,time,electrode_signal;xlim_low=0,xlim_up=la
         end
         #a.set_ylim([-0.01,0.01])
         a.set_yticklabels([])
+        a.set_yticks([])
         a.plot(time,electrode_signal[N_electrodes+1-i,:], color = colors[mod1(N_electrodes+1-i,2)])
         a.set_xlim([xlim_low,xlim_up])
         a.set_ylabel(string(N_electrodes+1-i))
