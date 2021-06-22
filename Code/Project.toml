@@ -1,0 +1,8 @@
+[deps]
+DSP = "717857b8-e6f2-59f4-9121-6e50c889abd2"
+FFTW = "7a1cc6ca-52ef-59f5-83cd-3a7055c09341"
+IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
+SampledSignals = "bd7594eb-a658-542f-9e75-4c4d8908c167"
+WAV = "8149f6b0-98f6-5db9-b78f-408fbbb8ef88"
