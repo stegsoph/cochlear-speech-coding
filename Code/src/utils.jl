@@ -1,3 +1,5 @@
+normalize(x::Array) =  x ./ maximum(abs.(x))
+
 """returns the number of times that the value changes its sign"""
 function zero_crossings(array::AbstractVector{T}, size::Int = length(array), offset::Int = 0) where {T<:Real}
     result = 0
@@ -124,3 +126,4 @@ function pulse_generation(Fs,PulseRate,ElectrodeRate,Envelope,N_electrodes;f_low
     return electrode_signal,electrodes,pulses,frequency_spacing
 
 end
+
